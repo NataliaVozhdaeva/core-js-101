@@ -506,8 +506,26 @@ function getMatrixProduct(m1, m2) {
  *    [    ,   ,    ]]
  *
  */
-function evaluateTicTacToePosition(/* position */) {
-  throw new Error('Not implemented');
+function evaluateTicTacToePosition(position) {
+  const p = position;
+  const winsLines = Array(8);
+  winsLines[0] = p[0][0] + p[0][1] + p[0][2];
+  winsLines[1] = p[1][0] + p[1][1] + p[1][2];
+  winsLines[2] = p[2][0] + p[2][1] + p[2][2];
+  winsLines[3] = p[0][0] + p[1][0] + p[2][0];
+  winsLines[4] = p[0][1] + p[1][1] + p[2][1];
+  winsLines[5] = p[0][2] + p[1][2] + p[2][2];
+  winsLines[6] = p[0][0] + p[1][1] + p[2][2];
+  winsLines[7] = p[0][2] + p[1][1] + p[2][0];
+  let winner;
+
+  winsLines.forEach((el) => {
+    if (el === '000' || el === 'XXX') {
+      winner = el.slice(0, 1);
+    }
+  });
+
+  return winner;
 }
 
 module.exports = {
